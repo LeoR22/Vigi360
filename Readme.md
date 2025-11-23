@@ -20,22 +20,24 @@ santander-security/
 │ │ ├─ chatbot.py # Interacción comunitaria 
 │ │ ├─ reports.py # Reportes ciudadanos en tiempo real (opcional) 
 │ ├─ models/ # Esquemas Pydantic 
-│ │ ├─ schemas.py │ ├─ services/ # Lógica de negocio y procesamiento
+│ │ ├─ schemas.py
+│ ├─ services/ # Lógica de negocio y procesamiento
 │ │ ├─ etl.py # Ingesta y normalización de datos 
 │ │ ├─ features.py # Derivación de variables (>25)
 │ │ ├─ train.py # Entrenamiento de modelo ML 
 │ │ ├─ explain.py # Explicabilidad con SHAP 
 │ │ ├─ storage.py # Validación y cobertura 
 │ │ ├─ chatbot.py # Generación de respuestas
-│ ├─ data/ │ │ ├─ raw/ # CSV originales
+│ ├─ data/
+│ │ ├─ raw/ # CSV originales
 │ │ ├─ processed/ # Parquet normalizados 
 │ │ ├─ models/ # Modelos entrenados (*.pkl) 
 │ │ ├─ logs/ # Logs de ejecución y API 
-├─ frontend/ # Aplicación Angular (mapa, filtros, chatbot) 
 ├─ scripts/ # Automatización 
 │ ├─ bootstrap.sh # ETL + features + entrenamiento 
 │ ├─ run_train.sh # Entrenamiento manual 
-│ ├─ seed_demo.sh # Datos de prueba 
+│ ├─ seed_demo.sh # Datos de prueba
+├─ frontend/ # Aplicación Angular (mapa, filtros, chatbot) 
 ├─ dockerfile # Imagen backend 
 ├─ docker-compose.yml # Backend + Frontend 
 ├─ requirements.txt # Dependencias Python 
@@ -169,5 +171,6 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENS
 - Linkedin:  <https://www.linkedin.com/in/gisselltrejosmarin>
 
 ### ¡Feliz Codificación! 🚀
+
 
 Si encuentras útil este proyecto, ¡dale una ⭐ en GitHub! 😊
