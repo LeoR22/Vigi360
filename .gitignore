@@ -1,0 +1,61 @@
+#Entornos virtuales
+.venv/
+.venv/*
+venv/
+env/
+app/.env/*
+app/.env/
+app/.env
+
+#Dependencias compiladas y librerías
+*.dll
+*.so
+*.dylib
+*.pyd
+
+#Archivos de instalación y caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+
+#Archivos de configuración locales
+.DS_Store
+*.log
+*.tmp
+
+#Datos pesados o resultados de pipelines
+*.parquet
+*.csv
+*.tsv
+*.json
+*.xlsx
+feature_pipeline_output/
+data/
+data/models/
+data/raw/
+data/processed/
+data/*
+data/models/*
+data/raw/*
+data/processed/*
+app/data/
+app/data/*
+app/data/models/
+app/data/raw/
+app/data/processed/
+
+#Modelos entrenados y binarios grandes
+*.h5
+*.pkl
+*.joblib
+*.model
+
+#Archivos de Docker y builds
+*.tar
+*.gz
+*.zip
+build/
+dist/
