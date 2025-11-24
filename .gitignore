@@ -1,6 +1,7 @@
 #Entornos virtuales
 .venv/
 .venv/*
+.venv
 venv/
 env/
 app/.env/*

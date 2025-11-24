@@ -131,15 +131,101 @@ python -m app.services.etl --fetch
 ```
 https://github.com/LeoR22/santander-security
 ```
-Moverse directorio principal
+Seleccionar el proyecto : Moverse al directorio principal
 ```
 cd santander-security
 ```
-### 2. Ejecuta el bootstrap para preparar datos y modelo
+
+### Crear entorno virtual
+Puedes usar dependiendo de tu version de python:
 ```
-scripts/bootstrap.sh
+python3 -m venv venv  
 ```
-### 3. Levanta backend + frontend
+O puedes usar este comando
+```
+ python -m venv venv 
+```
+### Activar entorno virtual
+
+**Para Linux/MacOS**
+
+```
+source venv/bin/activate
+```
+
+**En Windows:**
+
+```
+venv\Scripts\activate
+```
+
+### Instalar dependencias
+
+```
+pip install -r requirements.txt
+```
+
+### 🔐 Configuración del archivo .env para autenticación
+Para habilitar el acceso a los modelos de GitHub, debes crear un archivo .env con las siguientes variables:
+```
+📄 Ruta del archivo: app/.env
+```
+🔑 Genera tu token personal en el siguiente enlace: 
+[Playground de GitHub Models](https://github.com/marketplace/models/azure-openai/gpt-4o/playground)
+
+
+🖼️ Ejemplo visual:
+![token](img/token.png)
+
+- Copias y pegas estas variables y añades tu token a la variable *GITHUB_TOKEN*
+```
+OPENAI_BASE_URL="https://models.inference.ai.azure.com"
+OPENAI_EMBEDDINGS_URL="https://models.github.ai/inference"
+GITHUB_TOKEN="[tu-github-token]"
+```
+
+# USO
+
+### 1. Ejecutar modelo
+
+```
+python -m app.services.etl --fetch
+```
+- Se realiza el  ETL y se entrena el Modelo
+
+![modelo](img/modelo.png)
+
+### 2. Levantar proyecto local
+**Ejecutar el servidor**: Para ejecutar el servidor de FastAPI, usa el siguiente comando:
+
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+Esto iniciará la aplicación en <http://localhost:8000>.
+
+### Frontend
+
+1. **Abrir otro proyecto y cambiar de carpeta**:
+
+   ```bash
+   cd frontend
+   ```
+
+2. **Instalar dependencias:**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Ejecutar el servidor**: Para ejecutar el frontend en modo de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+Esto iniciará la aplicación en <http://localhost:4200>.
+
+## Si quieres levantar proyecto con Docker
+### 2.1 Levanta backend + frontend
 ```
 docker-compose up --build
 ```
