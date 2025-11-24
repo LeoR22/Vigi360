@@ -1,5 +1,5 @@
 # Tablero Inteligente de Seguridad Ciudadana para Santander
-![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54)  ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi) ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=flat&logo=angular&logoColor=white)   ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)  ![Scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=flat&logo=scikit-learn&logoColor=white)  ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=flat&logo=pandas&logoColor=white)  ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=flat&logo=numpy&logoColor=white)  ![XGBoost](https://img.shields.io/badge/xgboost-%23FF6600.svg?style=flat&logo=xgboost&logoColor=white)  ![SQLAlchemy](https://img.shields.io/badge/sqlalchemy-%23D71F00.svg?style=flat&logo=python&logoColor=white)![SHAP](https://img.shields.io/badge/shap-%23000000.svg?style=flat&logo=python&logoColor=white) 
+![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54)  ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi) ![React](https://shields.io/badge/-react-4377cb?logo=react)   ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)  ![Scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=flat&logo=scikit-learn&logoColor=white)  ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=flat&logo=pandas&logoColor=white)  ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=flat&logo=numpy&logoColor=white)  ![XGBoost](https://img.shields.io/badge/xgboost-%23FF6600.svg?style=flat&logo=xgboost&logoColor=white)  ![SQLAlchemy](https://img.shields.io/badge/sqlalchemy-%23D71F00.svg?style=flat&logo=python&logoColor=white)![SHAP](https://img.shields.io/badge/shap-%23000000.svg?style=flat&logo=python&logoColor=white) 
 ![Leaflet](https://img.shields.io/badge/leaflet-%23199900.svg?style=flat&logo=leaflet&logoColor=white)  
 
 
@@ -204,3 +204,4 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENS
 
 
 Si encuentras útil este proyecto, ¡dale una ⭐ en GitHub! 😊
+
