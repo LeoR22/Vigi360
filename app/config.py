@@ -26,6 +26,7 @@ RAW_DIR = DATA_DIR / "raw"
 PROC_DIR = DATA_DIR / "processed"
 MODELS_DIR = DATA_DIR / "models"
 LOGS_DIR = DATA_DIR / "logs"
+GEO_DIR = DATA_DIR / "geo"
 
 SOURCES = {
     "sexuales": "https://www.datos.gov.co/resource/fpe5-yrmw.csv?$limit=500000",

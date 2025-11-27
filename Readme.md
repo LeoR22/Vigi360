@@ -62,8 +62,12 @@ Se integraron más de 1 millón de registros provenientes de datos abiertos:
 | Delitos sexuales | [datos.gov.co](https://www.datos.gov.co/resource/fpe5-yrmw.csv) | 365K | 9 |
 | Violencia intrafamiliar | [datos.gov.co](https://www.datos.gov.co/resource/vuyt-mqpw.csv) | 634K | 8 |
 | Hurtos por modalidades | [datos.gov.co](https://www.datos.gov.co/resource/d4fr-sbn2.csv) | 43K | 9 |
+| Ubicación geográfica de municipios	 | [geoportal.dane.gov.co](https://geoportal.dane.gov.co/descargas/divipola/DIVIPOLA_CentrosPoblados.csv) | 339 | 4 |
 
-Se derivaron más de **25 variables** adicionales para análisis predictivo, cobertura, temporalidad y riesgo.
+Se derivaron más de **26 variables** adicionales para análisis predictivo, cobertura, temporalidad y riesgo.
+
+📌 Para la geolocalización de incidentes se utilizó el archivo oficial del DANE DIVIPOLA_CentrosPoblados.csv, filtrado por departamento = SANTANDER. 
+Se hizo la unión por codigo_dane para garantizar precisión en las coordenadas.
 
 ## 🧩 Componentes
 

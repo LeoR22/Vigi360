@@ -18,13 +18,13 @@ def _load_data():
 @router.get("/recent", response_model=list[CrimeRecentRecord])
 def recent():
     _load_data()
-    df = _df.sort_values("fecha_hecho", ascending=False).head(8)
+    df = _df.sort_values("fecha_hecho", ascending=False).head(100)
     out = []
     for i, r in df.iterrows():
         out.append(CrimeRecentRecord(
             id=f"#{i:03d}",
             tipo=str(r.get("tipo_delito", "OTRO")),
-            descripcion="Último reporte consolidado",
+            descripcion = f"Reporte reciente de {r.get('delito')}",
             ubicacion=f"{str(r.get('municipio',''))}, {str(r.get('departamento',''))}",
             fecha=str(r["fecha_hecho"]),
             severidad="crítica" if (r.get("cantidad", 0) or 0) >= 3 else ("alta" if (r.get("cantidad", 0) or 0) == 2 else "media"),
