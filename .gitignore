@@ -47,6 +47,9 @@ app/data/models/
 app/data/raw/
 app/data/processed/
 
+# Permitir cargar el archivo de municipios
+!app/data/geo/municipios.csv
+
 #Modelos entrenados y binarios grandes
 *.h5
 *.pkl
