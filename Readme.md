@@ -8,7 +8,7 @@ Este proyecto fue desarrollado como parte del concurso **Datos al Ecosistema 202
 ## Proyecto
 ![proyecto](img/proyecto.png)
 
-## 🧱 Arquitectura del Proyecto
+## 🧱 Arquitectura del Proyecto.
 
 ```bash
 santander-security/ 
@@ -300,4 +300,5 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENS
 
 
 Si encuentras útil este proyecto, ¡dale una ⭐ en GitHub! 😊
+
 
