@@ -142,11 +142,11 @@ python -m app.services.etl --fetch
 
 ### 1. Clona el proyecto y entra al directorio
 ```
-https://github.com/LeoR22/santander-security
+https://github.com/LeoR22/Vigi360
 ```
 Seleccionar el proyecto : Moverse al directorio principal
 ```
-cd santander-security
+cd vigi360
 ```
 
 ### Crear entorno virtual
