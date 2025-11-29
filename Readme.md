@@ -8,6 +8,9 @@ Este proyecto fue desarrollado como parte del concurso **Datos al Ecosistema 202
 ## Proyecto
 ![proyecto](img/proyecto.png)
 
+## Interactua con el Proyecto
+Mira como funciona el aplicativo aqui: [MVP-Figma](https://text-serve-64613369.figma.site/)
+
 ## 🧱 Arquitectura del Proyecto.
 
 ```bash
@@ -300,5 +303,6 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENS
 
 
 Si encuentras útil este proyecto, ¡dale una ⭐ en GitHub! 😊
+
 
 
