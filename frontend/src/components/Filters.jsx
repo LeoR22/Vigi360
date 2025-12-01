@@ -10,7 +10,7 @@ export function PredictiveAnalytics({ predictionData, municipalityData, incident
   const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
   const [isLoadingMunicipality, setIsLoadingMunicipality] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 5;
+  const itemsPerPage = 12;
 
   useEffect(() => {
     // Fetch prediction data from /risk/predict endpoint
@@ -69,161 +69,303 @@ export function PredictiveAnalytics({ predictionData, municipalityData, incident
   return (
     <div className="analytics-grid">
       {/* Predictive Analysis Chart */}
-<Card className="analytics-card">
-  <div className="analytics-header prediction-header">
-    <div className="header-icon-wrapper">
-      <TrendingUp />
+<Card style={{
+  backgroundColor: 'white',
+  borderRadius: '12px',
+  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+  overflow: 'hidden'
+}}>
+  {/* Cabecera */}
+  <div style={{
+    background: 'linear-gradient(to right, #2563eb, #1d4ed8)',
+    padding: '1rem 1.5rem',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px'
+  }}>
+    <div style={{
+      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      padding: '8px',
+      borderRadius: '8px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
+      <TrendingUp style={{ height: '20px', width: '20px', color: 'white' }} />
     </div>
-    <div className="header-text-content">
-      <h3>Análisis Predictivo</h3>
-      <p>Tendencia y predicción de incidentes</p>
+    <div>
+      <h2 style={{
+        color: 'white',
+        fontSize: '16px',
+        fontWeight: '600',
+        margin: '0'
+      }}>Proyección de Riesgos</h2>
+      <p style={{
+        color: '#bfdbfe',
+        fontSize: '12px',
+        margin: '0'
+      }}>Escenarios futuros y patrones críticos</p>
     </div>
   </div>
 
-  <div className="analytics-content">
+  {/* Contenido */}
+  <div style={{ padding: '1.5rem' }}>
     {/* Estado de carga */}
     {isLoadingPrediction && (
-      <div className="mt-4 p-6 text-center">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-2"></div>
-        <p className="text-sm text-gray-600">Cargando datos de predicción...</p>
+      <div style={{ textAlign: 'center', padding: '1rem' }}>
+        <div style={{
+          display: 'inline-block',
+          animation: 'spin 1s linear infinite',
+          borderRadius: '50%',
+          height: '32px',
+          width: '32px',
+          borderBottom: '2px solid #2563eb',
+          marginBottom: '8px'
+        }} />
+        <p style={{ fontSize: '14px', color: '#6b7280' }}>Cargando datos de predicción...</p>
       </div>
     )}
 
     {/* Estado sin datos */}
     {!isLoadingPrediction && !localPredictionData && (
-      <div className="mt-4 p-6 text-center bg-gray-50 rounded-lg border border-gray-200">
-        <p className="text-sm text-gray-600 mb-2">⚠️ No hay datos de predicción disponibles</p>
-        <p className="text-xs text-gray-500">Verifica la conexión con el servidor</p>
+      <div style={{
+        marginTop: '1rem',
+        padding: '1rem',
+        backgroundColor: '#fef3c7',
+        borderRadius: '8px',
+        borderLeft: '4px solid #f59e0b'
+      }}>
+        <p style={{ fontSize: '14px', color: '#92400e', margin: 0 }}>⚠️ No hay datos de predicción disponibles</p>
+        <p style={{ fontSize: '12px', color: '#b45309', marginTop: '4px' }}>Verifica la conexión con el servidor</p>
       </div>
     )}
 
-    {/* Datos cargados exitosamente */}
-    {!isLoadingPrediction && localPredictionData && (
-      <div className="space-y-4">
-        {/* Probabilidad General */}
-        {localPredictionData.probability !== undefined && (
-          <div className="p-4 bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-500 rounded-lg shadow-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold text-blue-900">
-                Probabilidad General de Incidentes
-              </span>
-              <span className="text-2xl font-bold text-blue-700">
-                {(localPredictionData.probability * 100).toFixed(2)}%
-              </span>
-            </div>
-            {localPredictionData.anio && localPredictionData.mes && (
-              <p className="text-xs text-blue-700 mt-2">
-                Predicción para: {localPredictionData.mes}/{localPredictionData.anio}
-              </p>
-            )}
-          </div>
+    {/* Probabilidad General */}
+    {localPredictionData?.probability !== undefined && (
+      <div style={{
+        marginTop: '1rem',
+        padding: '1rem',
+        backgroundColor: '#eff6ff',
+        borderRadius: '8px',
+        borderLeft: '4px solid #2563eb'
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: '14px', fontWeight: '600', color: '#1e40af' }}>
+            Probabilidad General de Incidentes
+          </span>
+          <span style={{ fontSize: '24px', fontWeight: '700', color: '#2563eb' }}>
+            {(localPredictionData.probability * 100).toFixed(2)}%
+          </span>
+        </div>
+        {localPredictionData.anio && localPredictionData.mes && (
+          <p style={{ fontSize: '12px', color: '#2563eb', marginTop: '6px' }}>
+            Predicción para: {localPredictionData.mes}/{localPredictionData.anio}
+          </p>
         )}
-
-        {/* Contexto Narrativo */}
-        {localPredictionData.contexto && (
-          <div className="p-4 bg-gradient-to-r from-indigo-50 to-purple-50 border-l-4 border-indigo-500 rounded-lg shadow-sm">
-            <h4 className="text-sm font-semibold text-indigo-900 mb-2 flex items-center gap-2">
-              <span>📊</span>
-              Análisis Contextual
-            </h4>
-            <p className="text-sm text-indigo-800 mb-3 leading-relaxed">
-              {localPredictionData.contexto.mensaje}
-            </p>
-            
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="bg-white bg-opacity-50 p-2 rounded">
-                <span className="font-semibold text-indigo-700">Género:</span>
-                <p className="text-indigo-600">{localPredictionData.contexto.genero_predominante}</p>
-              </div>
-              <div className="bg-white bg-opacity-50 p-2 rounded">
-                <span className="font-semibold text-indigo-700">Grupo Etario:</span>
-                <p className="text-indigo-600">{localPredictionData.contexto.grupo_etario_predominante}</p>
-              </div>
-              <div className="bg-white bg-opacity-50 p-2 rounded">
-                <span className="font-semibold text-indigo-700">Día Crítico:</span>
-                <p className="text-indigo-600">{localPredictionData.contexto.dia_semana_critico}</p>
-              </div>
-              <div className="bg-white bg-opacity-50 p-2 rounded">
-                <span className="font-semibold text-indigo-700">Franja Horaria:</span>
-                <p className="text-indigo-600">{localPredictionData.contexto.franja_horaria_critica}</p>
-              </div>
-              <div className="bg-white bg-opacity-50 p-2 rounded col-span-2">
-                <span className="font-semibold text-indigo-700">Tipo de Delito:</span>
-                <p className="text-indigo-600">{localPredictionData.contexto.tipo_delito_predominante}</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Ranking de Municipios */}
-        {(() => {
-          const ranking = localPredictionData.ranking_municipios || localPredictionData.ranking || [];
-          
-          if (ranking.length === 0) {
-            return (
-              <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg text-center">
-                <p className="text-sm text-gray-500">No hay ranking de municipios disponible</p>
-              </div>
-            );
-          }
-
-          return (
-            <div className="p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-              <h4 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                <span>🏆</span>
-                Top 5 Municipios Críticos
-              </h4>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b-2 border-gray-300">
-                      <th className="text-left py-2 px-2 font-semibold text-gray-700">Ranking</th>
-                      <th className="text-left py-2 px-2 font-semibold text-gray-700">Municipio</th>
-                      <th className="text-right py-2 px-2 font-semibold text-gray-700">Probabilidad</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {ranking.map((item, idx) => (
-                      <tr 
-                        key={idx} 
-                        className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                      >
-                        <td className="py-3 px-2">
-                          <span className={`
-                            inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold
-                            ${idx === 0 ? 'bg-yellow-400 text-yellow-900' : ''}
-                            ${idx === 1 ? 'bg-gray-300 text-gray-700' : ''}
-                            ${idx === 2 ? 'bg-orange-300 text-orange-900' : ''}
-                            ${idx > 2 ? 'bg-gray-100 text-gray-600' : ''}
-                          `}>
-                            {idx + 1}
-                          </span>
-                        </td>
-                        <td className="py-3 px-2 font-medium text-gray-800">
-                          {item.municipio}
-                        </td>
-                        <td className="py-3 px-2 text-right">
-                          <span className={`
-                            inline-block px-3 py-1 rounded-full text-xs font-semibold
-                            ${item.probabilidad > 0.7 ? 'bg-red-100 text-red-700' : ''}
-                            ${item.probabilidad > 0.4 && item.probabilidad <= 0.7 ? 'bg-yellow-100 text-yellow-700' : ''}
-                            ${item.probabilidad <= 0.4 ? 'bg-green-100 text-green-700' : ''}
-                          `}>
-                            {(item.probabilidad * 100).toFixed(2)}%
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          );
-        })()}
       </div>
     )}
+
+    {/* Contexto Narrativo */}
+    {localPredictionData?.contexto && (
+      <div style={{
+        marginTop: '1rem',
+        padding: '1rem',
+        backgroundColor: '#ede9fe',
+        borderRadius: '8px',
+        borderLeft: '4px solid #7c3aed'
+      }}>
+        <h4 style={{ fontSize: '14px', fontWeight: '600', color: '#5b21b6', marginBottom: '8px' }}>
+          Análisis Contextual
+        </h4>
+        <p style={{ fontSize: '14px', color: '#6d28d9', marginBottom: '12px' }}>
+          {localPredictionData.contexto.mensaje}
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px', fontSize: '12px' }}>
+          {[
+            { label: 'Género', value: localPredictionData.contexto.genero_predominante },
+            { label: 'Grupo Etario', value: localPredictionData.contexto.grupo_etario_predominante },
+            { label: 'Día Crítico', value: localPredictionData.contexto.dia_semana_critico },
+            { label: 'Franja Horaria', value: localPredictionData.contexto.franja_horaria_critica },
+            { label: 'Tipo de Delito', value: localPredictionData.contexto.tipo_delito_predominante, full: true }
+          ].map((item, idx) => (
+            <div key={idx} style={{
+              backgroundColor: 'rgba(255,255,255,0.6)',
+              padding: '8px',
+              borderRadius: '6px',
+              gridColumn: item.full ? 'span 2' : 'auto'
+            }}>
+              <strong style={{ color: '#5b21b6' }}>{item.label}:</strong>
+              <p style={{ color: '#6d28d9', margin: 0 }}>{item.value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+    {/* Ranking de Municipios */}
+{(() => {
+  const ranking = localPredictionData?.ranking_municipios || localPredictionData?.ranking || [];
+
+  const getChipStyle = (p) => {
+    if (p > 0.7) return { backgroundColor: '#fee2e2', color: '#b91c1c' };      // rojo suave
+    if (p > 0.4) return { backgroundColor: '#fef9c3', color: '#a16207' };      // amarillo suave
+    return { backgroundColor: '#dcfce7', color: '#166534' };                    // verde suave
+  };
+
+  if (!ranking || ranking.length === 0) {
+    return (
+      <div style={{
+        marginTop: '1rem',
+        padding: '1rem',
+        backgroundColor: '#f9fafb',
+        borderRadius: '12px',
+        border: '1px solid #e5e7eb',
+        textAlign: 'center'
+      }}>
+        <p style={{ fontSize: '14px', color: '#6b7280', margin: 0 }}>No hay ranking de municipios disponible</p>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{
+      backgroundColor: 'white',
+      borderRadius: '12px',
+      boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+      border: '1px solid #e5e7eb',
+      overflow: 'hidden'
+    }}>
+      {/* Cabecera del bloque */}
+      <div style={{
+        background: 'linear-gradient(to right, #2563eb, #1d4ed8)',
+        padding: '0.75rem 1rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px'
+      }}>
+        <div style={{
+          backgroundColor: 'rgba(255,255,255,0.2)',
+          padding: '6px',
+          borderRadius: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <span style={{ fontSize: '16px', color: 'white' }}>🏆</span>
+        </div>
+        <div>
+          <h4 style={{ margin: 0, color: 'white', fontSize: '14px', fontWeight: 700 }}>
+            Top 5 Municipios Críticos
+          </h4>
+
+          <p style={{ margin: 0, color: '#bfdbfe', fontSize: '12px' }}>
+            Probabilidad estimada por municipio
+          </p>
+        </div>
+      </div>
+
+      {/* Tabla */}
+      <div style={{ overflowX: 'auto' }}>
+        <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: 0 }}>
+          <thead>
+            <tr style={{ borderBottom: '1px solid #e5e7eb', backgroundColor: '#f9fafb' }}>
+              <th style={{ textAlign: 'left', padding: '10px', fontSize: '12px', color: '#6b7280', fontWeight: 600 }}>
+                Ranking
+              </th>
+              <th style={{ textAlign: 'left', padding: '10px', fontSize: '12px', color: '#6b7280', fontWeight: 600 }}>
+                Municipio
+              </th>
+              <th style={{ textAlign: 'right', padding: '10px', fontSize: '12px', color: '#6b7280', fontWeight: 600 }}>
+                Probabilidad
+              </th>
+              <th style={{ textAlign: 'right', padding: '10px', fontSize: '12px', color: '#6b7280', fontWeight: 600 }}>
+                Intensidad
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {ranking.slice(0, 5).map((item, idx) => {
+              const p = item.probabilidad ?? item.probability ?? 0;
+              const chipStyle = getChipStyle(p);
+              const medalStyle =
+                idx === 0 ? { backgroundColor: '#facc15', color: '#78350f' } :
+                idx === 1 ? { backgroundColor: '#e5e7eb', color: '#374151' } :
+                idx === 2 ? { backgroundColor: '#fdba74', color: '#7c2d12' } :
+                             { backgroundColor: '#f3f4f6', color: '#6b7280' };
+
+              return (
+                <tr
+                  key={idx}
+                  style={{
+                    borderBottom: '1px solid #f1f5f9',
+                    transition: 'background-color 150ms ease',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                >
+                  <td style={{ padding: '12px 10px' }}>
+                    <span style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '24px',
+                      height: '24px',
+                      borderRadius: '999px',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      ...medalStyle
+                    }}>
+                      {idx + 1}
+                    </span>
+                  </td>
+                  <td style={{ padding: '12px 10px', color: '#111827', fontWeight: 500, fontSize: '13px' }}>
+                    {item.municipio}
+                  </td>
+                  <td style={{ padding: '12px 10px', textAlign: 'right' }}>
+                    <span style={{
+                      display: 'inline-block',
+                      padding: '4px 10px',
+                      borderRadius: '999px',
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      ...chipStyle
+                    }}>
+                      {(p * 100).toFixed(2)}%
+                    </span>
+                  </td>
+                  <td style={{ padding: '12px 10px', textAlign: 'right', minWidth: '140px' }}>
+                    {/* Barra de intensidad visual */}
+                    <div style={{
+                      backgroundColor: '#e5e7eb',
+                      borderRadius: '999px',
+                      height: '8px',
+                      overflow: 'hidden'
+                    }}>
+                      <div style={{
+                        width: `${Math.round(p * 100)}%`,
+                        height: '100%',
+                        background: p > 0.7
+                          ? 'linear-gradient(to right, #ef4444, #dc2626)'
+                          : p > 0.4
+                          ? 'linear-gradient(to right, #f59e0b, #d97706)'
+                          : 'linear-gradient(to right, #22c55e, #16a34a)',
+                        transition: 'width 300ms ease'
+                      }} />
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+})()}
+
   </div>
+
 </Card>
+      
       {/* Municipality Distribution */}
       <Card className="analytics-card">
         <div className="analytics-header municipality-header">

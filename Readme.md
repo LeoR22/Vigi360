@@ -235,7 +235,7 @@ Esto iniciará la aplicación en <http://localhost:8000>.
    ```bash
    npm run dev
    ```
-Esto iniciará la aplicación en <http://localhost:4200>.
+Esto iniciará la aplicación en <http://localhost:5173>.
 
 ## Si quieres levantar proyecto con Docker
 ### 2.1 Levanta backend + frontend
